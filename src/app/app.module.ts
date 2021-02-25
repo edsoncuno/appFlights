@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {path : "home", component : HomeComponent},
@@ -22,7 +23,8 @@ const routes : Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    [RouterModule.forRoot(routes)]
+    [RouterModule.forRoot(routes)],
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

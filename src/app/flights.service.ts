@@ -25,9 +25,40 @@ export class FlightsService {
     },
   ]
 
+  flightsQuery : Flight[] = [
+    {
+      id : 1, origin : "Atlanta", destination : "New York",
+      flightNumber : 456, depart : new Date("2020-02-28T17:17:20.315Z"),
+      arrive : new Date("2020-02-28T20:17:20.315Z"), nonstop : true
+    }
+  ]
+
   constructor() { }
 
-  getAllFlights() : Flight[] {
+  getAllFlights() : any[] {
     return this.flights;
+  }
+
+  getQueryFlights(origin : string, destination : string) : any[] {
+    if (origin == undefined || destination == undefined) {
+      return this.flights;
+    }
+    else {
+      return this.flightsQuery;
+    }
+  }
+
+  getAllOrigin() : any[] {
+    const objArray : any[] = [{origin:"Atlanta"},{origin:"Jackson"},{origin:"Phoenix"}];
+    return objArray;
+  }
+
+  getAllDestination() : any[] {
+    const objArray : any[] = [{destination:"Chicago"},{destination:"Denver"},{destination:"New York"}];
+    return objArray;
+  }
+
+  postFlight(objFlight : Flight) {
+    console.log("data posted to server!");
   }
 }

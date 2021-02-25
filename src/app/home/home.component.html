@@ -7,31 +7,37 @@
       <div class="container">
         <div class="search_pane"> 
           <div class="search_box">
-            <select>
+            <select [(ngModel)]="origin">
               <option value="" disabled selected>from</option>
+              <option *ngFor = "let origin of origins" value={{origin.origin}}>
+                {{origin.origin}}
+              </option>
             </select>
           </div>
           <div class="search_box">
-            <select>
+            <select [(ngModel)]="destination">
               <option value="" disabled selected>to</option>
+              <option *ngFor = "let destination of destinations" value={{destination.destination}}>
+                {{destination.destination}}
+              </option>
             </select>
           </div>
           <div class="search_box">
-            <button>Go</button>
+            <button (click) = "query()">Go</button>
           </div>
         </div>
-        <div class="flight_pane">  
+        <div class="flight_pane">
           <div class="flight_headers">
-            <div class="cell"> Flight # </div>
-            <div class="cell"> Departs </div>
-            <div class="cell"> Arrives </div>
-            <div class="cell"> Nonstop </div>
+            <div class="cell">Flight #</div>
+            <div class="cell">Departs</div>
+            <div class="cell">Arrives</div>
+            <div class="cell">Nonstop</div>
           </div>
           <div *ngFor="let flight of flights" class="flight_results">
-            <div class="flight_number cell"> {{flight.flightNumber}}</div>
-            <div class="departs cell"> {{flight.depart | date : 'shortDate' }}</div>
-            <div class="arrives cell"> {{flight.arrive | date : 'shortDate' }}</div>
-            <div class="nonstop cell"> {{flight.nonstop}}</div>
+            <div class="flight_number cell">{{flight.flightNumber}}</div>
+            <div class="cell">{{flight.depart | date : 'shortDate' }}</div>
+            <div class="cell">{{flight.arrive | date : 'shortDate' }}</div>
+            <div class="cell">{{flight.nonstop}}</div>
           </div>
         </div>
       </div>
